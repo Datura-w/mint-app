@@ -45,7 +45,7 @@
 <!-- 分类部分内容         -->
         <mt-tab-container-item id="分类">  
           <div class="sort_a">
-            <mt-navbar class="page-part" v-model="selected_1">  
+            <mt-navbar fixed class="page-part" v-model="selected_1">  
               <mt-tab-item id="1">品类</mt-tab-item>  
               <mt-tab-item id="2">品牌</mt-tab-item>  
               <mt-tab-item id="3">动态</mt-tab-item>  
@@ -103,7 +103,7 @@
                   <mt-index-section index="A">
                     <mt-cell title="adidas"></mt-cell>
                   </mt-index-section>
-                  <mt-index-section index="c">
+                  <mt-index-section index="C">
                     <mt-cell title="comback"></mt-cell>
                     <mt-cell title="converse 匡威"></mt-cell>
                   </mt-index-section>
@@ -200,9 +200,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.home .el-menu-item.is-active {
+    color: #333;
+}
+.home .el-menu-item,.home .el-submenu__title {
+/*去掉element组件自带的规定所显示的指针（光标）的类型。*/
+  cursor:auto;
+}
 .tab_a .mint-tabbar{
   height: 56px;
   position: fixed;
+  z-index: 2;
 }
 .tab_a .mint-tab-item {
   margin-top: 3px;
@@ -221,8 +229,11 @@ export default {
   float: left;
   padding-top: 20px;
 }
-.head.el-submenu p{
+.head .el-submenu p{
   padding-left: 5px;
+  margin-top: 0;
+}
+.head .el-menu-item-group__title{
   padding-top: 0;
 }
 .swipe_a1{
@@ -243,6 +254,13 @@ export default {
 .head_a2 p{
   font-size: 13px;
 }
+.sort_a .el-submenu__icon-arrow {
+/*去掉element中NavMenu导航菜单的<小标签（static默认值，没有定位）*/
+  position:static;
+}
+.sort_a .mint-navbar{
+  z-index: 3;
+}
 .sort_a .el-menu-item,.sort_a .el-submenu__title {
   padding-left: 0 !important;
   padding: 0 0;
@@ -253,6 +271,12 @@ export default {
 }
 .sort_a .el-menu-item-group__title{
   padding-top: 0;
+}
+.sort_a .mint-navbar .mint-tab-item.is-selected {
+    border-bottom: 3px solid #333;
+    color: #333;
+    background: #eaeaea;
+    margin-bottom: -3px;
 }
 .sort_a h3{
   position: absolute;
@@ -272,7 +296,6 @@ export default {
 .sort_brand .mint-indexsection-index{
   padding: 10px 0;
   text-align: left;
-
 }
 .sort_brand .mint-cell-title {
   text-align: left;

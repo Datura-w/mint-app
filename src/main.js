@@ -8,19 +8,12 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-import VueLazyload from 'vue-lazyload'
  
-Vue.use(VueLazyload)
+
 Vue.use(ElementUI)
 Vue.use(MintUI)
 Vue.config.productionTip = false
 
-Vue.use(VueLazyload, {
- preLoad: 1.3,
- error: 'dist/error.png',
- loading: 'dist/loading.gif',
- attempt: 1
-})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
