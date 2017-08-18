@@ -97,8 +97,22 @@
                   </el-menu> 
               </mt-tab-container-item>
 <!-- 品牌   -->
-            <div class="sort_brand">
-              <mt-tab-container-item id="2">  
+          
+            <mt-tab-container-item id="2">
+            <div class="sort_brand"> 
+            <mt-search
+                autofocus   
+                v-model="value"   
+                :result="filterResult">  
+            </mt-search>  
+              <ul class="ul_brand">
+                <li><img src="./../assets/brand1.jpg" width="100%" ></li>
+                <li><img src="./../assets/brand2.jpg" width="100%" ></li>
+                <li><img src="./../assets/brand3.jpg" width="100%" ></li>
+                <li><img src="./../assets/brand4.jpg" width="100%" ></li>
+                <li><img src="./../assets/brand5.jpg" width="100%" ></li>
+                <li><img src="./../assets/brand6.jpg" width="100%" ></li>
+              </ul>
                 <mt-index-list>
                   <mt-index-section index="A">
                     <mt-cell title="adidas"></mt-cell>
@@ -107,10 +121,6 @@
                     <mt-cell title="comback"></mt-cell>
                     <mt-cell title="converse 匡威"></mt-cell>
                   </mt-index-section>
-                  <mt-index-section index="F">
-                  </mt-index-section>
-                  <mt-index-section index="G">
-                  </mt-index-section>
                    <mt-index-section index="M">
                     <mt-cell title="MANGO 芒果"></mt-cell>
                     <mt-cell title="Meejoan"></mt-cell>
@@ -118,14 +128,27 @@
                   <mt-index-section index="W">
                     <mt-cell title="WILDFOX 野狐"></mt-cell>
                   </mt-index-section>
-                </mt-index-list> 
+                </mt-index-list>
+                </div> 
               </mt-tab-container-item>
-            </div> 
+       
 <!-- 动态 -->
-              <mt-tab-container-item id="3">  
-                <mt-cell v-for="n in 6" :title="'选项 ' + n" />  
-              </mt-tab-container-item>  
-            </mt-tab-container>  
+            
+            <mt-tab-container-item id="3">
+              <div class="sort_dynamic">
+              <ul class="ul_dynamic">
+                 <li>
+                   <el-row :gutter="20">
+                      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+                      <el-col :span="18"><div class="grid-content bg-purple"></div></el-col>
+                   </el-row>
+                 </li>
+              </ul> 
+              </div>
+              </mt-tab-container-item>   
+           
+          </mt-tab-container>
+
         </div>  
         </mt-tab-container-item> 
 
@@ -178,28 +201,45 @@ export default {
   data () {
     return {
       selected: '分类',
-      selected_1: '1'
+      selected_1: '2',
+      value: '',  
+      // 默认数据  
+      defaultResult: [  
+        'addida',  
+        'comback',  
+        'converse',  
+        'MANGO',  
+        'Meejoan'
+      ] ,
+      // dynamicList:[
+      //   {
+      //     id:1,
+      //     imgUrl:d_img1,
+      //     title:"AAAA"
+      //   }
+      // ]
     }
+  },
+   computed: {  
+    filterResult() {  
+      return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value));  
+    }  
   },
   methods: {
       handleOpen(key, keyPath) {
-        // console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        // console.log(key, keyPath);
       }
   }
- // method:{
- //    selected: function (val, oldVal) {
- //        // 这里就可以通过 val 的值变更来确定
- //        console.log(val)
- //    }
- //  }
+
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+ul {
+  list-style-type: none;
+}
 .home .el-menu-item.is-active {
     color: #333;
 }
@@ -294,10 +334,46 @@ export default {
   width: 100%;
 }
 .sort_brand .mint-indexsection-index{
-  padding: 10px 0;
+  padding: 10px 13px;
   text-align: left;
 }
 .sort_brand .mint-cell-title {
   text-align: left;
+}
+.ul_brand{
+  margin: 17px 10px;
+  padding-left: 0;
+}
+.ul_brand li{
+   width: 30%;
+   display: inline-block;
+}
+.sort_brand .mint-tab-container-item {
+  border-top: solid 1px #ddd;
+}
+.sort_brand .mint-search {
+  height:50px;
+  /*overflow: hidden;*/
+  width: 100%;
+}
+.sort_brand .mint-searchbar-cancel {
+    color: #333;
+}
+.sort_dynamic .ul_dynamic li{
+    width: 100%;
+    display:block;
+}
+.sort_dynamic .ul_dynamic{
+  padding-left: 0;
+}
+/*动态中element栅格布局*/
+.bg-purple {
+  background:pink;
+} 
+.grid-content {
+  min-height: 100px;
+}
+.ul_dynamic .el-col-6 {
+    padding-right: 0;
 }
 </style>
