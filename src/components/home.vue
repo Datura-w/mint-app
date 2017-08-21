@@ -136,12 +136,30 @@
             
             <mt-tab-container-item id="3">
               <div class="sort_dynamic">
+              <div class="word">卖家动态</div>
               <ul class="ul_dynamic">
-                 <li>
+                 <li v-for="dynamic in dynamicList">
                    <el-row :gutter="20">
-                      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-                      <el-col :span="18"><div class="grid-content bg-purple"></div></el-col>
+                      <el-col :span="4"><div class="grid-content bg-purple"><img :src="dynamic.seller_img1"></div></el-col>
+                      <el-col :span="20">
+                      <div class="grid-content bg-purple">
+                        <div class="seller_name">{{dynamic.seller_name}}</div>
+                        <div class="seller_focus"><p>关注</p><img :src="dynamic.focus_img1"></div>
+                      </div>
+                      </el-col>
                    </el-row>
+                   <el-row :gutter="20">
+                      <el-col :span="20" :offset="4">
+                      <div class="grid-content bg-purple">
+                        <div class="seller_title">{{dynamic.seller_title}}</div><br />
+                        <div class="content_img1">
+                          <img :src="dynamic.content_img1">
+                          <img :src="dynamic.content_img2">
+                          <img :src="dynamic.content_img3">
+                        </div>
+                      </div>
+                      </el-col>                                        
+                    </el-row>
                  </li>
               </ul> 
               </div>
@@ -201,7 +219,7 @@ export default {
   data () {
     return {
       selected: '分类',
-      selected_1: '2',
+      selected_1: '3',
       value: '',  
       // 默认数据  
       defaultResult: [  
@@ -211,15 +229,23 @@ export default {
         'MANGO',  
         'Meejoan'
       ] ,
-      // dynamicList:[
-      //   {
-      //     id:1,
-      //     imgUrl:d_img1,
-      //     title:"AAAA"
-      //   }
-      // ]
+      //动态列表
+      dynamicList:[{
+          seller_img1: "",
+          seller_name: "",
+          focus_img1: "",
+          seller_title:"",
+          content_img1: "",
+          content_img2: "",
+          content_img3: ""
+        }]
     }
   },
+   mounted:function(){  
+      var vm = this;
+      //获取动态列表json数据
+      vm.getData();
+  },  
    computed: {  
     filterResult() {  
       return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value));  
@@ -229,6 +255,14 @@ export default {
       handleOpen(key, keyPath) {
       },
       handleClose(key, keyPath) {
+      },
+      getData(){
+        //获取动态列表json数据
+        this.$http.get('../../static/dataJSON/dynamic.json').then(function(response){ 
+          this.dynamicList = response.data.dynamicData;
+        },function(response){
+          alert('请求失败了')
+        })
       }
   }
 
@@ -367,13 +401,46 @@ ul {
   padding-left: 0;
 }
 /*动态中element栅格布局*/
-.bg-purple {
+/*.ul_dynamic .bg-purple {
   background:pink;
-} 
-.grid-content {
-  min-height: 100px;
+}*/ 
+.ul_dynamic .grid-content {
+  min-height: 45px;
+  font-size: 15px;
 }
-.ul_dynamic .el-col-6 {
-    padding-right: 0;
+.ul_dynamic li{
+  margin-bottom: 35px;
+}
+.ul_dynamic .el-row{
+  margin-left: 3px !important;
+}
+.ul_dynamic .el-col-4 .grid-content img{
+  width: 43px;
+  height: 45px;
+  border-radius: 20px !important;
+}
+.ul_dynamic .seller_name{
+  float: left;
+}
+.ul_dynamic .seller_focus{
+  float: right;
+  padding-right: 38px;
+}
+.ul_dynamic .seller_title{
+  text-align: left;
+  font-size: 13px;
+}
+.ul_dynamic .content_img1 img{
+  width: 95px;
+  height: 95px;
+  float: left;
+}
+.sort_dynamic .word{
+  border: 1px solid #ddd;
+  height: 28px;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 6px;
+  font-size: 15px;
 }
 </style>
