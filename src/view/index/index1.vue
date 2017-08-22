@@ -60,7 +60,7 @@ export default {
   components:{Home,Sort,Shop,Myself},
   data () {
     return {
-      selected: '购物袋',
+      selected: '我的',
       value: '',  
     }
   }

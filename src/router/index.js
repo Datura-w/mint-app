@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 // import Index from '@/components/index'
 import Index1 from '@/view/index/index1'
+import Login from '@/view/myself/login'
 
 
 
@@ -13,7 +14,7 @@ export default new Router({
     {
       path: '/',
       name: '',
-      component: Index1
+      component: Login
     }
   ]
 })
