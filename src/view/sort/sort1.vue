@@ -101,7 +101,7 @@
                       <el-col :span="20">
                       <div class="grid-content bg-purple">
                         <div class="seller_name">{{dynamic.seller_name}}</div>
-                        <div class="seller_focus"><p>关注</p><img :src="dynamic.focus_img1"></div>
+                        <div class="seller_focus"><p>关注&nbsp&nbsp<i class="fa fa-heart-o" aria-hidden="true"></i></p></div>
                       </div>
                       </el-col>
                    </el-row>
