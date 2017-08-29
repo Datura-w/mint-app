@@ -1,6 +1,6 @@
 <template>
   <div class="my">
-  	<mt-header title="我的">
+  	<mt-header fixed title="我的">
 	 <!--  <router-link to="/" slot="left">
 	    <mt-button icon="back">back</mt-button>
 	  </router-link>
@@ -29,12 +29,50 @@
   </div>
   <div class="my_d">
    	<ul>
-   		<li><i class="fa fa-credit-card" aria-hidden="true"></i></li>
-   		<li><i class="fa fa-calendar-o" aria-hidden="true"></i></li>
-   		<li><i class="fa fa-truck" aria-hidden="true"></i></li>
-   		<li><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></li>
-   		<li><i class="fa fa-jpy" aria-hidden="true"></i></li>
+   		<li><i class="fa fa-credit-card" aria-hidden="true"></i><br />待付款</li>
+   		<li><i class="fa fa-calendar-o" aria-hidden="true"></i><br />待发货</li>
+   		<li><i class="fa fa-truck" aria-hidden="true"></i><br />待收货</li>
+   		<li><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br />待评价</li>
+   		<li><i class="fa fa-jpy" aria-hidden="true"></i><br />售后</li>
    	</ul> 
+  </div>
+<!-- 灰色分割线 -->
+  <hr height="10px" color=#eef1f6 SIZE=10>
+  <div class="my_e">
+  	<ul>
+  		<li><i class="fa fa-building-o" aria-hidden="true"></i>地址管理
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>
+  		<li><i class="fa fa-rebel" aria-hidden="true"></i>我的会员
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>
+  		<li><i class="fa fa-money" aria-hidden="true"></i>我的钱包
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>
+  		<li><i class="fa fa-newspaper-o" aria-hidden="true"></i>我的范票
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>	 			
+  		<li><i class="fa fa-share-alt" aria-hidden="true"></i>邀请好友赢范票
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>
+  		<li><i class="fa fa-indent" aria-hidden="true"></i>兑换范票
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>
+  		<li><i class="fa fa-ticket" aria-hidden="true"></i>优惠券
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>	 		
+  	<hr height="10px" color=#eef1f6 SIZE=10>
+  		<li><i class="fa fa-binoculars" aria-hidden="true"></i>在线服务
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>
+  		<li><i class="fa fa-commenting" aria-hidden="true"></i>意见反馈
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>
+  	<hr height="10px" color=#eef1f6 SIZE=10>
+  		<li><i class="fa fa-life-ring" aria-hidden="true"></i>生活助手
+  		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  		</li>
+  	</ul>
   </div>
 
  
@@ -122,5 +160,33 @@ export default {
 .my_d ul>li{
   width: 20%;
   float: left;
+  font-size: 13px;
+  color: #909497;
+  margin-bottom: 12px;
+}
+.my_d ul>li i{
+  font-size: 21px;
+}
+.my_e ul{
+  width: 100%;
+  padding:0;
+}
+.my_e ul>li{
+  width: 100%;
+  display: inline-block;
+  font-size: 13px;
+  height: 48px;
+  line-height: 48px;
+  text-align: left;
+  padding-left: 15px;
+}
+.my_e ul>li i{
+  font-size: 15px;
+  margin-right: 11px;
+  color:#909497;
+}
+.my_e ul>li .i-right{
+  float: right;
+  width: 35px;
 }
 </style>
