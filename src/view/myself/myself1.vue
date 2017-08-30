@@ -72,6 +72,7 @@
   		<li><i class="fa fa-life-ring" aria-hidden="true"></i>生活助手
   		   <div class="i-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
   		</li>
+  	<hr height="10px" color=#eef1f6 SIZE=10>
   	</ul>
   </div>
 
@@ -166,6 +167,9 @@ export default {
 }
 .my_d ul>li i{
   font-size: 21px;
+}
+.my_e{
+  margin-bottom: 55px;
 }
 .my_e ul{
   width: 100%;
